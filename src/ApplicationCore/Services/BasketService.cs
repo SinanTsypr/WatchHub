@@ -45,11 +45,11 @@ namespace ApplicationCore.Services
                     Quantity = quantity,
                     Product = product
                 };
+                basket.Items.Add(basketItem);
             }
 
             await _basketRepo.UpdateAsync(basket);
             return basket;
-
         }
 
         public async Task DeleteBasketItemAsync(string buyerId, int productId)

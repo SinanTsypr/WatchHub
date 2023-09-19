@@ -43,7 +43,7 @@
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                     @item.Price.ToString("c2")
-                    <a href="#" class="btn btn-sm btn-success">
+                    <a href="#" class="btn btn-sm btn-success" data-add="@item.Id">
                         <i class="fa-solid fa-cart-plus"></i>
                     </a>
                 </div>
@@ -104,3 +104,17 @@
         }
     </ul>
 </nav>
+
+@section Scripts {
+    <script>
+        $("[data-add]").click(function (e) {
+            e.preventDefault();
+            const productId = $(this).data("add");
+
+            $.post("@Url.Action("AddItem","Basket")", { productId }, function (data) {
+                $("#navbarBasketCount").text(data.totalItems);
+                successMessage("Item successfully added to basket.");
+            });
+        });
+    </script>
+}
