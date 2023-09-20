@@ -16,3 +16,6 @@
         title: msg
     });
 }
+
+if (successMessageTemp)
+    successMessage(successMessageTemp);     

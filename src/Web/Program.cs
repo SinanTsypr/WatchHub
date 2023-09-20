@@ -9,6 +9,7 @@ global using Web.Interfaces;
 global using Web.Extensions;
 using Web.Services;
 using ApplicationCore.Services;
+using Web.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,6 +54,8 @@ app.UseRequestLocalization("en-US");
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseBasketTransfer();
 
 app.MapControllerRoute(
     name: "default",
