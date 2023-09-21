@@ -28,6 +28,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 builder.Services.AddScoped<IBasketService, BasketService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IHomeViewModelService, HomeViewModelService>();
 builder.Services.AddScoped<IBasketViewModelService, BasketViewModelService>();
 
