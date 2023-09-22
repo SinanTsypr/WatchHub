@@ -87,6 +87,9 @@ namespace ApplicationCore.Services
 
         public async Task<Basket> SetQuantitiesAsync(string buyerId, Dictionary<int, int> quantities)
         {
+            if (quantities.Any(kvp => kvp.Value < 1))
+                throw new NonPositiveQuantityException();
+
             var basket = await GetOrCreateBasketAsync(buyerId);
 
             foreach (var item in basket.Items)
